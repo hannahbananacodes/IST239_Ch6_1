@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 6 Assignment 1</title>
+</head>
+<body style="background-color: whitesmoke;">
+    <script type="text/javascript">
+
+    // Receive grades from user, put into array
+        let grade = 0;
+        let grades = [];
+        for (let i = 1; i < 7; i++)
+        {
+            grade = window.prompt("Enter weekly quiz " + i + " grade:");
+            grades.push(parseInt(grade));
+        }
+        let exam = window.prompt("Enter your Final Exam grade: ");
+
+    // Calculate overall exam score
+        let overallScore = 0;
+            for (let i = 1; i <7; i++)
+            {
+                overallScore += ((grades[i-1]) * 0.1);
+            }
+            overallScore += (exam * 0.4);
+
+    // Determine letter grade with if statement
+        let letterGrade = 'F';
+        if ((overallScore <= 100) && (overallScore >=91))
+            {
+                letterGrade = 'A';
+            }
+        else if ((overallScore <= 90) && (overallScore >=81))
+            {
+                letterGrade = 'B';
+            }
+        else if ((overallScore <= 80) && (overallScore >=71))
+            {
+                letterGrade = 'C';
+            } 
+        else if ((overallScore <= 70) && (overallScore >= 65))
+            {
+                letterGrade = 'D';
+            }
+
+    // Determine message with switch
+        let message = "";
+
+        switch (letterGrade)
+        {
+            case 'A' :
+                message = "Great job, keep it up";
+                break;
+            case 'B' :
+                message = "Very nice work";
+                break;
+            case 'C' :
+                message = "You can do it, keep studying";
+                break;
+            case 'D' :
+                message = "You need some help, see the teacher";
+                break;
+            default :
+                message = "Please schedule an appointment with your advisor";
+        }
+
+    // If score is valid, write list of grades to page
+        if ((overallScore <= 100) && (overallScore >= 0))
+            {
+            document.write("Your 7 exam scores are:<br>")
+                for (let i = 1; i < 7;  i++)
+                {
+                    document.write("Weekly Quiz " + i + ": " + grades[i-1] + "<br>");
+                }
+            document.write("Final Exam: " + exam + "<br><br>");
+        
+    // Write final grade, letter grade, and message to page
+            document.write("Overall Exam Grade: " + overallScore + "<br>");
+            document.write("Course Grade: " + letterGrade + "<br>");
+            document.write(message);
+            } else // if score is not valid, print error message
+            {
+                document.write("Invalid score. Please refresh the page and try again.");
+            }
+    </script>
+</body>
+</html>
